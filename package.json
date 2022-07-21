@@ -13,8 +13,11 @@
         "release:patch": "standard-version -- --release-as patch"
     },
     "dependencies": {
+        "@portabletext/react": "^1.0.6",
+        "@sanity/image-url": "^1.0.1",
         "daisyui": "^2.19.0",
         "next": "12.2.2",
+        "next-sanity": "^0.6.0",
         "nextjs-progressbar": "^0.0.14",
         "react": "18.2.0",
         "react-dom": "18.2.0"
