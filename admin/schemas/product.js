@@ -108,6 +108,14 @@ export default {
             description: 'Indicate similar products.',
             type: 'array',
             of: [{ type: 'reference', to: { type: 'product' } }],
+            validation: [
+                (Rule) =>
+                    Rule.unique().error('All related products must be unique.'),
+                (Rule) =>
+                    Rule.max(3).error(
+                        'You can only put a maximum of three related products.'
+                    ),
+            ],
         },
     ],
 
