@@ -12,4 +12,12 @@ export interface IProduct {
     stocks: number;
     description: any;
     blurb: string;
+    relatedProducts: Array<{
+        name: string;
+        price: number;
+        image: SanityImageSource;
+        slug: string;
+        stocks: number;
+        blurb: string;
+    }>;
 }
