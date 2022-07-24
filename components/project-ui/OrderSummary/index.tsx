@@ -1,15 +1,20 @@
 import type { FunctionComponent } from 'react';
 
+// State Management Import
+import { useCartStore } from '@store/product';
+
 const OrderSummary: FunctionComponent = () => {
+    const totalPrice = useCartStore((state) => state.totalPrice);
+
     return (
-        <div className="card bg-gray-100 md:w-80">
+        <div className="card bg-gray-100 w-64 md:w-80">
             <div className="card-body text-base-content">
                 <h5 className="card-title font-bold text-primary">
                     Order Summary
                 </h5>
                 <div className="flex space-between text-sm">
                     <p>Subtotal</p>
-                    <p className="text-end font-bold">₱0</p>
+                    <p className="text-end font-bold">₱ {totalPrice}</p>
                 </div>
                 <div className="divider -my-1"></div>
                 <div className="flex space-between text-sm">
@@ -20,7 +25,7 @@ const OrderSummary: FunctionComponent = () => {
                 <div className="flex space-between text-sm">
                     <p className="text-lg font-bold">Total Amount</p>
                     <p className="text-end font-bold text-primary text-lg">
-                        ₱0
+                        ₱ {totalPrice}
                     </p>
                 </div>
                 <div className="card-action">

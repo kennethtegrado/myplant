@@ -2,7 +2,7 @@
     "root": true,
     "project": {
         "name": "myplant",
-        "basePath": "/studio"
+        "basePath": "/admin"
     },
     "api": {
         "projectId": "btyrjasu",
