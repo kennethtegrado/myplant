@@ -10,7 +10,9 @@
         "release": "standard-version",
         "release:major": "standard-version -- --release-as major",
         "release:minor": "standard-version -- --release-as minor",
-        "release:patch": "standard-version -- --release-as patch"
+        "release:patch": "standard-version -- --release-as patch",
+        "sanity": "cd admin && sanity start",
+        "prebuild": "echo 'Building Sanity to public/admin' && cd admin && yarn && npx @sanity/cli build ../public/admin -y && echo 'Done'"
     },
     "dependencies": {
         "@portabletext/react": "^1.0.6",
