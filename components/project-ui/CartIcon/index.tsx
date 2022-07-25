@@ -6,11 +6,19 @@ import Link from 'next/link';
 // State Management Library
 import { useCartStore } from '@store/product';
 
-const CartIcon: FunctionComponent = () => {
+interface CartIconProps {
+    active?: boolean;
+}
+
+const CartIcon: FunctionComponent<CartIconProps> = ({ active }) => {
     const cartItemCount = useCartStore((state) => state.items);
     return (
         <Link passHref href="/cart">
-            <button className="btn btn-circle btn-ghost relative">
+            <button
+                className={`btn btn-circle btn-ghost ${
+                    active && 'text-primary'
+                } relative`}
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"

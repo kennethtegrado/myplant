@@ -1,10 +1,17 @@
 import type { FunctionComponent } from 'react';
 
+// NEXT Improt
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
+// Component Import
 import { CartIcon } from '@components/project-ui';
 
 const Navbar: FunctionComponent = () => {
+    const router = useRouter();
+
+    const path = router.pathname.replace('/', ' ').trim().split(' ')[0];
+
     return (
         <header className="shadow-md w-full bg-base-100">
             <nav className="navbar px-10 container mx-auto z-50">
@@ -20,7 +27,13 @@ const Navbar: FunctionComponent = () => {
                         <ul className="menu menu-horizontal hidden md:block">
                             <li tabIndex={0}>
                                 <Link href="/shop">
-                                    <span className="font-medium text-primary link link-hover">
+                                    <span
+                                        className={`font-medium link ${
+                                            path === 'shop'
+                                                ? 'text-primary'
+                                                : 'link-hover'
+                                        }`}
+                                    >
                                         Shop
                                         <svg
                                             className="fill-current"
@@ -34,7 +47,7 @@ const Navbar: FunctionComponent = () => {
                                     </span>
                                 </Link>
 
-                                <ul className="z-10 bg-base-100 w-48">
+                                <ul className="z-10 bg-base-200 w-48 shadow-lg">
                                     <li className="hover-bordered">
                                         <a>Herb Plants</a>
                                     </li>
@@ -51,11 +64,11 @@ const Navbar: FunctionComponent = () => {
                             </li>
                         </ul>
 
-                        <button className="btn btn-ghost text-primary hidden md:block">
+                        <button className="btn btn-ghost hidden md:block">
                             Track Order
                         </button>
 
-                        <CartIcon />
+                        <CartIcon active={path === 'cart'} />
 
                         <div className="dropdown dropdown-end md:hidden">
                             <label
