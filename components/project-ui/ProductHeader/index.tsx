@@ -9,9 +9,9 @@ import { imageBuilder } from '@utils/sanity';
 import { useCartStore } from '@store/product';
 
 interface ProductHeaderProps {
-    categories: Array<{
+    category: {
         title: string;
-    }>;
+    };
     price: number;
     blurb: string;
     name: string;
@@ -23,7 +23,7 @@ interface ProductHeaderProps {
 
 const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
     _id,
-    categories,
+    category,
     price,
     blurb,
     name,
@@ -56,11 +56,9 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
     return (
         <div className="flex-1">
             <div className="flex flex-row mb-2">
-                {categories.map((item, index) => (
-                    <div key={index} className="badge badge-primary capitalize">
-                        {item.title}
-                    </div>
-                ))}
+                <div className="badge badge-primary capitalize">
+                    {category?.title}
+                </div>
             </div>
             <h2 className="text-2xl font-bold">{name}</h2>
             <p className="text-lg">{blurb}</p>
