@@ -85,15 +85,11 @@ export default {
         },
 
         {
-            name: 'categories',
-            title: 'Categories',
-            type: 'array',
-            of: [
-                {
-                    type: 'reference',
-                    to: { type: 'category' },
-                },
-            ],
+            name: 'category',
+            title: 'Category',
+            description: 'Identify the kind of this plant',
+            type: 'reference',
+            to: { type: 'category' },
             required: true,
         },
         {

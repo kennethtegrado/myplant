@@ -4,9 +4,9 @@ export interface IProduct {
     _id: string;
     name: string;
     images: SanityImageSource[];
-    categories: Array<{
+    category: {
         title: string;
-    }>;
+    };
     price: number;
     slug: string;
     stocks: number;
