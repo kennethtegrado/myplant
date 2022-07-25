@@ -6,6 +6,9 @@ import ProductCarousel from './ProductCarousel';
 import ProductCard from './ProductCard';
 import ProductsContainer from './ProductsContainer';
 import ProductHeader from './ProductHeader';
+import SearchProduct from './SearchProduct';
+import FilterModal from './FilterModal';
+import ShopPagination from './ShopPagination';
 
 export {
     OrderSummary,
@@ -16,4 +19,7 @@ export {
     ProductsContainer,
     ProductHeader,
     CartIcon,
+    SearchProduct,
+    FilterModal,
+    ShopPagination,
 };

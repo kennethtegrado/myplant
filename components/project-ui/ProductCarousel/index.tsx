@@ -37,7 +37,7 @@ const ProductCarousel: FunctionComponent<ProductCarouselProps> = ({
                                 href={`#slide${
                                     index === 0 ? images.length - 1 : index - 1
                                 }`}
-                                className="btn btn-circle"
+                                className="btn btn-circle btn-primary"
                             >
                                 &#10094;
                             </a>
@@ -45,7 +45,7 @@ const ProductCarousel: FunctionComponent<ProductCarouselProps> = ({
                                 href={`#slide${
                                     index === images.length - 1 ? 0 : index + 1
                                 }`}
-                                className="btn btn-circle"
+                                className="btn btn-circle btn-primary"
                             >
                                 &#10095;
                             </a>

@@ -5,7 +5,7 @@ import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import ProductCard from '../ProductCard';
 
 interface ProductsContainerProps {
-    title: string;
+    title?: string;
     products: Array<{
         name: string;
         price: number;
@@ -24,8 +24,8 @@ const ProductsContainer: FunctionComponent<ProductsContainerProps> = ({
 
     return (
         <article>
-            <h3 className="text-2xl">{title}</h3>
-            <div className="flex flex-wrap py-5 gap-10">
+            {title && <h3 className="text-2xl">{title}</h3>}
+            <div className="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-5 gap-x-3 gap-y-5 md:gap-8">
                 {products?.map((item, index) => (
                     <ProductCard {...item} key={index} />
                 ))}

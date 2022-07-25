@@ -1,14 +1,6 @@
 import create from 'zustand';
 
-interface ICartProduct {
-    name: string;
-    _id: string;
-    imageURL: string;
-    quantity: number;
-    price: number;
-    slug: string;
-    stock: number;
-}
+import type { ICartProduct } from '@interface/sanity';
 
 interface CartState {
     items: number;
