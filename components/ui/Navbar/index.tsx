@@ -12,6 +12,14 @@ const Navbar: FunctionComponent = () => {
 
     const path = router.pathname.replace('/', ' ').trim().split(' ')[0];
 
+    const query = router.query;
+
+    let category =
+        query.categories &&
+        typeof query.categories == 'string' &&
+        query.categories.split(',').length === 1 &&
+        query.categories.split(',')[0];
+
     return (
         <header className="shadow-md w-full bg-base-100">
             <nav className="navbar px-10 container mx-auto z-50">
@@ -48,16 +56,56 @@ const Navbar: FunctionComponent = () => {
                                 </Link>
 
                                 <ul className="z-10 bg-base-200 w-48 shadow-lg">
-                                    <li className="hover-bordered">
+                                    <li
+                                        className={`hover-bordered ${
+                                            category === '"herbs"' &&
+                                            'bg-primary text-white'
+                                        }`}
+                                        onClick={() =>
+                                            router.push(
+                                                '/shop?categories="herbs"'
+                                            )
+                                        }
+                                    >
                                         <a>Herb Plants</a>
                                     </li>
-                                    <li className="hover-bordered">
+                                    <li
+                                        className={`hover-bordered ${
+                                            category === '"flowering"' &&
+                                            'bg-primary text-white'
+                                        }`}
+                                        onClick={() =>
+                                            router.push(
+                                                '/shop?categories="flowering"'
+                                            )
+                                        }
+                                    >
                                         <a>Flowering Plants</a>
                                     </li>
-                                    <li className="hover-bordered">
+                                    <li
+                                        className={`hover-bordered ${
+                                            category === '"trees"' &&
+                                            'bg-primary text-white'
+                                        }`}
+                                        onClick={() =>
+                                            router.push(
+                                                '/shop?categories="trees"'
+                                            )
+                                        }
+                                    >
                                         <a>Tree Plants</a>
                                     </li>
-                                    <li className="hover-bordered">
+                                    <li
+                                        className={`hover-bordered ${
+                                            category === '"vines"' &&
+                                            'bg-primary text-white'
+                                        }`}
+                                        onClick={() =>
+                                            router.push(
+                                                '/shop?categories="vines"'
+                                            )
+                                        }
+                                    >
                                         <a>Vines</a>
                                     </li>
                                 </ul>
@@ -92,16 +140,62 @@ const Navbar: FunctionComponent = () => {
                             </label>
                             <ul
                                 tabIndex={0}
-                                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                                className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52"
                             >
-                                <li>
-                                    <a>All Products</a>
+                                <li
+                                    className={`${
+                                        path === 'shop' && !category
+                                            ? 'bg-primary text-white'
+                                            : 'link-hover'
+                                    }`}
+                                >
+                                    <Link href="/shop">All Products</Link>
                                 </li>
-                                <li>
-                                    <a>Plants</a>
+                                <li
+                                    className={`hover-bordered ${
+                                        category === '"herbs"' &&
+                                        'bg-primary text-white'
+                                    }`}
+                                    onClick={() =>
+                                        router.push('/shop?categories="herbs"')
+                                    }
+                                >
+                                    <a>Herb Plants</a>
                                 </li>
-                                <li>
-                                    <a>Trees</a>
+                                <li
+                                    className={`hover-bordered ${
+                                        category === '"flowering"' &&
+                                        'bg-primary text-white'
+                                    }`}
+                                    onClick={() =>
+                                        router.push(
+                                            '/shop?categories="flowering"'
+                                        )
+                                    }
+                                >
+                                    <a>Flowering Plants</a>
+                                </li>
+                                <li
+                                    className={`hover-bordered ${
+                                        category === '"trees"' &&
+                                        'bg-primary text-white'
+                                    }`}
+                                    onClick={() =>
+                                        router.push('/shop?categories="trees"')
+                                    }
+                                >
+                                    <a>Tree Plants</a>
+                                </li>
+                                <li
+                                    className={`hover-bordered ${
+                                        category === '"vines"' &&
+                                        'bg-primary text-white'
+                                    }`}
+                                    onClick={() =>
+                                        router.push('/shop?categories="vines"')
+                                    }
+                                >
+                                    <a>Vines</a>
                                 </li>
                                 <li>
                                     <a className="text-primary active:text-white">
