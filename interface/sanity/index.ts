@@ -33,3 +33,9 @@ export interface ICartProduct {
     slug: string;
     stock: number;
 }
+
+export interface ICategory {
+    name: string;
+    image: SanityImageSource;
+    blurb: string;
+}

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/kennethtegrado/myplant/compare/v0.2.0...v0.2.1) (2022-07-26)
+
+
+### Features
+
+* add image and blurb for categories on section ([85a85c2](https://github.com/kennethtegrado/myplant/commit/85a85c2b3da802fded27dce58c97f63b4383a67f))
+* add landing page ([643d5d8](https://github.com/kennethtegrado/myplant/commit/643d5d872906e8b3c3772752aeb6f3e881b438a1))
+* add navbar functionality ([e61dd6f](https://github.com/kennethtegrado/myplant/commit/e61dd6f0a6385887a60fa07859d99674461c6245))
+* add official logo of MyLittlePlant ([22fcc9e](https://github.com/kennethtegrado/myplant/commit/22fcc9ed1aa07875c1c1632c8f40a0b2b5cbe489))
+
 ## [0.2.0](https://github.com/kennethtegrado/myplant/compare/v0.1.0...v0.2.0) (2022-07-25)
 
 
