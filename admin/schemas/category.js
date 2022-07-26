@@ -14,19 +14,38 @@ export default {
                 ),
         },
         {
+            name: 'blurb',
+            title: 'Blurb',
+            description: 'Give a short description about this category.',
+            type: 'string',
+        },
+        {
             name: 'description',
             title: 'Description',
             type: 'text',
             description: 'Let people know what this category is all about.',
         },
+        {
+            name: 'image',
+            title: 'Image',
+            type: 'image',
+            description: 'Show people what this category is all about.',
+            options: {
+                hotspot: true,
+            },
+        },
     ],
     preview: {
         select: {
             title: 'title',
+            media: 'image',
         },
         prepare(selection) {
-            const { title } = selection;
-            return { title: title[0].toUpperCase() + title.slice(1) };
+            const { title, media } = selection;
+            return {
+                title: title[0].toUpperCase() + title.slice(1),
+                media: media,
+            };
         },
     },
 };

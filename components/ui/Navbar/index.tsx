@@ -2,10 +2,14 @@ import type { FunctionComponent } from 'react';
 
 // NEXT Improt
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 // Component Import
 import { CartIcon } from '@components/project-ui';
+
+// Logo Import
+import logo from '@public/logo.svg';
 
 const Navbar: FunctionComponent = () => {
     const router = useRouter();
@@ -25,8 +29,14 @@ const Navbar: FunctionComponent = () => {
             <nav className="navbar px-10 container mx-auto z-50">
                 <div className="flex-1">
                     <Link passHref href="/">
-                        <h3 className="text-xl font-bold capitalize cursor-pointer">
-                            MyLittlePlant
+                        <h3 className="text-xl font-bold capitalize cursor-pointer flex gap-1 items-center flex-row">
+                            <div className="hidden md:block md:w-6 md:h-6">
+                                <Image
+                                    src={logo}
+                                    alt="MyLittlePlant - New Beginning"
+                                ></Image>
+                            </div>
+                            <div> MyLittlePlant</div>
                         </h3>
                     </Link>
                 </div>
