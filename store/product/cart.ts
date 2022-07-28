@@ -5,15 +5,18 @@ import type { ICartProduct } from '@interface/sanity';
 interface CartState {
     items: number;
     totalPrice: number;
+    alert: { success: boolean; message: string };
     addProduct: (product: ICartProduct) => void;
     products: ICartProduct[];
     reduceItem: (id: string) => void;
     increaseItem: (id: string) => void;
+    setAlert: (success: boolean, message: string) => void;
 }
 
 const useCartStore = create<CartState>((set) => ({
     items: 0,
     products: [],
+    alert: { success: false, message: '' },
     totalPrice: 0,
     addProduct: (product) =>
         set((state) => {
@@ -21,7 +24,19 @@ const useCartStore = create<CartState>((set) => ({
                 (item) => item._id === product._id
             );
             if (existingProduct) {
-                existingProduct.quantity += product.quantity;
+                const newQuantity = existingProduct.quantity + product.quantity;
+
+                if (newQuantity > product.stock)
+                    throw new Error(
+                        `There's not enough stock for ${
+                            newQuantity - product.stock
+                        } more item${
+                            newQuantity - product.stock > 1 ? 's' : ''
+                        }`
+                    );
+
+                existingProduct.quantity = newQuantity;
+
                 return {
                     products: [...state.products],
                     items: state.items + product.quantity,
@@ -61,6 +76,10 @@ const useCartStore = create<CartState>((set) => ({
                     totalPrice: state.totalPrice + product.price,
                 };
             } else return { products: state.products };
+        }),
+    setAlert: (success, message) =>
+        set({
+            alert: { success, message },
         }),
 }));
 

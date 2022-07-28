@@ -2,7 +2,7 @@ import type { ChangeEventHandler, FunctionComponent } from 'react';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // State
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { imageBuilder } from '@utils/sanity';
 
@@ -34,13 +34,24 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
     const [quantity, setQuantity] = useState('');
 
     const addItem = useCartStore((state) => state.addProduct);
+    const setAlert = useCartStore((state) => state.setAlert);
 
     const changeHandler: ChangeEventHandler<HTMLInputElement> = (event) =>
         setQuantity(event.target.value);
 
     const addProduct = () => {
-        if (+quantity > stocks) return;
+        if (+quantity > stocks) {
+            setAlert(
+                false,
+                `There's not enough stocks for ${+quantity - stocks} item${
+                    +quantity - stocks > 1 ? 's' : ''
+                }`
+            );
+            return;
+        }
+
         const imageURL = imageBuilder(image).toString();
+
         const product = {
             name,
             _id,
@@ -50,7 +61,16 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
             slug,
             stock: stocks,
         };
-        addItem(product);
+
+        try {
+            addItem(product);
+            setAlert(
+                true,
+                `${quantity} items were successfully added to cart.`
+            );
+        } catch (error) {
+            if (error instanceof Error) setAlert(false, error.message);
+        }
     };
 
     return (
