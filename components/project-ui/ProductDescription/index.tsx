@@ -11,7 +11,7 @@ const ProductDescription: FunctionComponent<ProductDescriptionProps> = ({
     description,
 }) => {
     return (
-        <article className="prose md:prose-xl prose-slate max-w-none">
+        <article className="prose prose-slate max-w-none">
             <PortableText value={description} />
         </article>
     );
