@@ -27,7 +27,7 @@ const Product: NextPage<ProductProps> = ({ product }) => {
     return (
         <>
             <Head>
-                <title>{product.name} - MyLittlePlant</title>
+                <title>{product.name + ' - MyLittlePlant'}</title>
                 <meta name="description" content={product.blurb} />
                 <meta
                     property="og:title"

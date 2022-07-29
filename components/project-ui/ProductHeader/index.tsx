@@ -2,7 +2,7 @@ import type { ChangeEventHandler, FunctionComponent } from 'react';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // State
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { imageBuilder } from '@utils/sanity';
 
@@ -40,16 +40,6 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
         setQuantity(event.target.value);
 
     const addProduct = () => {
-        if (+quantity > stocks) {
-            setAlert(
-                false,
-                `There's not enough stocks for ${+quantity - stocks} item${
-                    +quantity - stocks > 1 ? 's' : ''
-                }`
-            );
-            return;
-        }
-
         const imageURL = imageBuilder(image).toString();
 
         const product = {
@@ -75,6 +65,7 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
 
     return (
         <div className="flex-1">
+            <div className="divider"></div>
             <div className="flex flex-row mb-2">
                 <div className="badge badge-primary capitalize">
                     {category?.title}
@@ -82,18 +73,16 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
             </div>
             <h2 className="text-2xl font-bold">{name}</h2>
             <p className="text-lg">{blurb}</p>
-            <div className="divider -mb-1"></div>
-            <p className="flex items-center justify-between my-2">
+            <p className="flex items-center justify-start gap-5 my-2">
                 <span className="price">Price</span>
                 <span className="price text-lg text-primary font-bold">
                     ₱ {price}
                 </span>
             </p>
-            <p className="flex items-center justify-between mt-2">
+            <p className="flex items-center justify-start gap-5 my-2">
                 <span className="price">Stocks</span>
                 <span className="price">{stocks}</span>
             </p>
-            <div className="divider"></div>
             <div className="my-2 flex gap-2 flex-col lg:flex-row">
                 <div>
                     <input
@@ -119,6 +108,7 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
                     Add to Cart
                 </button>
             </div>
+            <div className="divider"></div>
         </div>
     );
 };

@@ -20,6 +20,15 @@ const useCartStore = create<CartState>((set) => ({
     totalPrice: 0,
     addProduct: (product) =>
         set((state) => {
+            if (product.quantity > product.stock)
+                throw new Error(
+                    `There's not enough stock for ${
+                        product.quantity - product.stock
+                    } more item${
+                        product.quantity - product.stock > 1 ? 's' : ''
+                    }`
+                );
+
             const existingProduct = state.products.find(
                 (item) => item._id === product._id
             );
