@@ -11,6 +11,7 @@ interface CartState {
     reduceItem: (id: string) => void;
     increaseItem: (id: string) => void;
     setAlert: (success: boolean, message: string) => void;
+    removeItem: (id: string) => void;
 }
 
 const useCartStore = create<CartState>((set) => ({
@@ -89,6 +90,28 @@ const useCartStore = create<CartState>((set) => ({
     setAlert: (success, message) =>
         set({
             alert: { success, message },
+        }),
+    removeItem: (id) =>
+        set((state) => {
+            const removeProduct = state.products.find(
+                (item) => item._id === id
+            );
+
+            if (!removeProduct) return state;
+
+            const newProducts = state.products.filter(
+                (item) => item !== removeProduct
+            );
+
+            const newCount = state.items - removeProduct.quantity;
+
+            const reducePrice = removeProduct.quantity * removeProduct.price;
+
+            return {
+                products: newProducts,
+                totalPrice: state.totalPrice - reducePrice,
+                items: newCount,
+            };
         }),
 }));
 
