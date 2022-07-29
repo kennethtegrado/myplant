@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { groq } from 'next-sanity';
 
 // Utils
-import { getClient } from '@utils/sanity';
+import { getClient, imageBuilder } from '@utils/sanity';
 
 // Component Import
 import {
@@ -27,7 +27,17 @@ const Product: NextPage<ProductProps> = ({ product }) => {
     return (
         <>
             <Head>
-                <title>{product.name}</title>
+                <title>{product.name + ' - MyLittlePlant'}</title>
+                <meta name="description" content={product.blurb} />
+                <meta
+                    property="og:title"
+                    content={`Buy your very own ${product.name} through MyLittlePlant Shop.`}
+                />
+                <meta property="og:description" content={product.blurb} />
+                <meta
+                    property="og:image"
+                    content={imageBuilder(product.images[0]).toString()}
+                />
             </Head>
             <section className="py-10">
                 <div className="text-sm breadcrumbs mb-5">

@@ -34,13 +34,14 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
     const [quantity, setQuantity] = useState('');
 
     const addItem = useCartStore((state) => state.addProduct);
+    const setAlert = useCartStore((state) => state.setAlert);
 
     const changeHandler: ChangeEventHandler<HTMLInputElement> = (event) =>
         setQuantity(event.target.value);
 
     const addProduct = () => {
-        if (+quantity > stocks) return;
         const imageURL = imageBuilder(image).toString();
+
         const product = {
             name,
             _id,
@@ -50,11 +51,21 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
             slug,
             stock: stocks,
         };
-        addItem(product);
+
+        try {
+            addItem(product);
+            setAlert(
+                true,
+                `${quantity} items were successfully added to cart.`
+            );
+        } catch (error) {
+            if (error instanceof Error) setAlert(false, error.message);
+        }
     };
 
     return (
         <div className="flex-1">
+            <div className="divider"></div>
             <div className="flex flex-row mb-2">
                 <div className="badge badge-primary capitalize">
                     {category?.title}
@@ -62,18 +73,16 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
             </div>
             <h2 className="text-2xl font-bold">{name}</h2>
             <p className="text-lg">{blurb}</p>
-            <div className="divider -mb-1"></div>
-            <p className="flex items-center justify-between my-2">
+            <p className="flex items-center justify-start gap-5 my-2">
                 <span className="price">Price</span>
                 <span className="price text-lg text-primary font-bold">
                     ₱ {price}
                 </span>
             </p>
-            <p className="flex items-center justify-between mt-2">
+            <p className="flex items-center justify-start gap-5 my-2">
                 <span className="price">Stocks</span>
                 <span className="price">{stocks}</span>
             </p>
-            <div className="divider"></div>
             <div className="my-2 flex gap-2 flex-col lg:flex-row">
                 <div>
                     <input
@@ -99,6 +108,7 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
                     Add to Cart
                 </button>
             </div>
+            <div className="divider"></div>
         </div>
     );
 };

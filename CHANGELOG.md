@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/kennethtegrado/myplant/compare/v0.2.1...v0.2.2) (2022-07-29)
+
+
+### Features
+
+* add delete item from cart ([872b76b](https://github.com/kennethtegrado/myplant/commit/872b76bb577026b371db6f23247efb789da4bd33))
+* add meta tags for each product page ([340fe11](https://github.com/kennethtegrado/myplant/commit/340fe11a325d910468a32b6622ac19704593a9d3))
+* add success and error prompts on add to cart ([0c9a268](https://github.com/kennethtegrado/myplant/commit/0c9a268edda44a581da4f185b1d2519c3287a4b1))
+
+
+### Bug Fixes
+
+* show proper alert type for adding items on cart ([fb0c8fd](https://github.com/kennethtegrado/myplant/commit/fb0c8fd7f635e47d9a7976aeb4885ae84c7bdd6d))
+
 ### [0.2.1](https://github.com/kennethtegrado/myplant/compare/v0.2.0...v0.2.1) (2022-07-26)
 
 
