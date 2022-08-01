@@ -1,1 +1,3 @@
-export {};
+import useMountEffect from './useMountEffect';
+
+export { useMountEffect };
