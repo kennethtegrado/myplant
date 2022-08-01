@@ -39,3 +39,29 @@ export interface ICategory {
     image: SanityImageSource;
     blurb: string;
 }
+
+export interface OrderObject {
+    _createdAt: string;
+    _id: string;
+    _rev: string;
+    _type: string;
+    _updatedAt: string;
+    address: string;
+    items: number;
+    name: string;
+    number: string;
+    orders: Product[];
+    price: number;
+    processing: boolean;
+}
+
+interface Product {
+    _key: string;
+    items: number;
+    product:
+        | {
+              _type: 'reference';
+              _ref: string;
+          }
+        | null[];
+}

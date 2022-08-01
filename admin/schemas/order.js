@@ -95,8 +95,8 @@ export default {
             return {
                 title: title,
                 subtitle: processing
-                    ? 'This order still needs to be processed.'
-                    : 'This order is already processed, please check the status.',
+                    ? 'This order is already processed, please check the status.'
+                    : 'This order still needs to be processed.',
             };
         },
     },
