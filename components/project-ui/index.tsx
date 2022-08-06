@@ -10,6 +10,7 @@ import SearchProduct from './SearchProduct';
 import FilterModal from './FilterModal';
 import ShopPagination from './ShopPagination';
 import ProductCart from './ProductCart';
+import OrderSteps from './OrderSteps';
 
 export {
     OrderSummary,
@@ -24,4 +25,5 @@ export {
     FilterModal,
     ShopPagination,
     ProductCart,
+    OrderSteps,
 };

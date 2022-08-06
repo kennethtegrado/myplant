@@ -1,5 +1,5 @@
 import { createClient, createPreviewSubscriptionHook } from 'next-sanity';
-
+import sanityClient from '@sanity/client';
 import createImageUrlBuilder from '@sanity/image-url';
 
 import { config } from './config';
@@ -24,6 +24,8 @@ export const previewClient = createClient({
     ...config,
     useCdn: false,
 });
+
+export const clientSanity = sanityClient(config);
 
 export const getClient = (usePreview?: boolean) =>
     usePreview ? previewClient : client;
