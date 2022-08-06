@@ -23,13 +23,19 @@ const OrderModal: FunctionComponent = () => {
     const [nameError, setNameError] = useState('');
     const [addressError, setAddressError] = useState('');
     const [phoneError, setPhoneError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const products = useCartStore((state) => state.products);
     const totalPrice = useCartStore((state) => state.totalPrice);
     const totalItems = useCartStore((state) => state.items);
+    const clearItems = useCartStore((state) => state.clearItems);
 
     const submitHandler: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
+
+        if (loading) return;
+
+        setLoading(true);
 
         if (!name || !address || !phoneNumber) {
             if (!name)
@@ -50,6 +56,7 @@ const OrderModal: FunctionComponent = () => {
                 setPhoneError('Please put a valid phone number.');
             else setPhoneError('');
 
+            setLoading(false);
             return;
         } else {
             setPhoneError('');
@@ -70,6 +77,8 @@ const OrderModal: FunctionComponent = () => {
                 body: JSON.stringify(orderData),
             });
             const { data }: OrderAPIResponse = await response.json();
+            clearItems();
+            setLoading(false);
             router.push(`/order/${data._id}`);
         } catch (err) {
             console.log(err);
@@ -171,7 +180,10 @@ const OrderModal: FunctionComponent = () => {
                                 )}
                             </div>
                             <div className="modal-action">
-                                <button className="btn btn-primary">
+                                <button
+                                    className="btn btn-primary"
+                                    disabled={loading}
+                                >
                                     Confirm Order
                                 </button>
                             </div>
