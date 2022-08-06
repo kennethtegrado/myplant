@@ -225,7 +225,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 
     if (!order)
         return {
-            notFound: true,
+            redirect: {
+                destination: '/order/notfound',
+                permanent: false,
+            },
         };
 
     return {
