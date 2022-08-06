@@ -16,6 +16,7 @@ interface CartState {
     increaseItem: (id: string) => void;
     setAlert: (success: boolean, message: string) => void;
     removeItem: (id: string) => void;
+    clearItems: () => void;
 }
 
 const useCartStore = create<CartState>((set) => ({
@@ -123,6 +124,9 @@ const useCartStore = create<CartState>((set) => ({
                 items: newCount,
             };
         }),
+    clearItems: () => {
+        return set({ products: [], totalPrice: 0, items: 0 });
+    },
 }));
 
 export default useCartStore;
