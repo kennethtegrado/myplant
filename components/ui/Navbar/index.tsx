@@ -122,9 +122,17 @@ const Navbar: FunctionComponent = () => {
                             </li>
                         </ul>
 
-                        <button className="btn btn-ghost hidden md:block">
-                            Track Order
-                        </button>
+                        <Link href="/order" passHref>
+                            <button
+                                className={` btn  hidden md:block font-medium ${
+                                    path === 'order'
+                                        ? 'btn-primary'
+                                        : 'btn-ghost'
+                                }`}
+                            >
+                                Track Order
+                            </button>
+                        </Link>
 
                         <CartIcon active={path === 'cart'} />
 
@@ -208,9 +216,11 @@ const Navbar: FunctionComponent = () => {
                                     <a>Vines</a>
                                 </li>
                                 <li>
-                                    <a className="text-primary active:text-white">
-                                        Track Order
-                                    </a>
+                                    <Link href="/order" passHref>
+                                        <a className="text-primary active:text-white">
+                                            Track Order
+                                        </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
