@@ -55,6 +55,30 @@ export interface OrderObject {
     processing: boolean;
 }
 
+export interface IOrderItem {
+    _id: string;
+    address: string;
+    name: string;
+    number: string;
+    price: number;
+    processing: boolean;
+    orders: IOrderProduct[];
+    status: {
+        status: 'to pack' | 'delivered' | 'for delivery' | 'packed';
+    } | null;
+    items: number;
+}
+
+interface IOrderProduct {
+    items: number;
+    product: {
+        name: string;
+        price: number;
+        image: SanityImageSource;
+        slug: string;
+    };
+}
+
 interface Product {
     _key: string;
     items: number;
