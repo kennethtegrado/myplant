@@ -9,6 +9,8 @@ import ProductHeader from './ProductHeader';
 import SearchProduct from './SearchProduct';
 import FilterModal from './FilterModal';
 import ShopPagination from './ShopPagination';
+import ProductCart from './ProductCart';
+import OrderSteps from './OrderSteps';
 
 export {
     OrderSummary,
@@ -22,4 +24,6 @@ export {
     SearchProduct,
     FilterModal,
     ShopPagination,
+    ProductCart,
+    OrderSteps,
 };

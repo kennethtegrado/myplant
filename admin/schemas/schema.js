@@ -7,6 +7,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import blockContent from './blockContent';
 import category from './category';
 import product from './product';
+import order from './order';
+import status from './status';
 
 import localeString from './locale/String';
 import localeText from './locale/Text';
@@ -23,6 +25,8 @@ export default createSchema({
         // in the studio.
         product,
         category,
+        order,
+        status,
         // When added to this list, object types can be used as
         // { type: 'typename' } in other document schemas
         blockContent,
