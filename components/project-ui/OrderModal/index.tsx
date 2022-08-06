@@ -100,67 +100,105 @@ const OrderModal: FunctionComponent = () => {
                             </svg>
                         </label>
                     </div>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Customer Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            className="input input-bordered w-full"
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
-                        />
-                        {nameError && (
-                            <label className="label">
-                                <span className="label-text-alt text-error">
-                                    {nameError}
+                    {products.length ? (
+                        <>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">
+                                        Customer Name
+                                    </span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Name"
+                                    className="input input-bordered w-full"
+                                    value={name}
+                                    onChange={(event) =>
+                                        setName(event.target.value)
+                                    }
+                                />
+                                {nameError && (
+                                    <label className="label">
+                                        <span className="label-text-alt text-error">
+                                            {nameError}
+                                        </span>
+                                    </label>
+                                )}
+                            </div>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">
+                                        Customer Address
+                                    </span>
+                                </label>
+                                <textarea
+                                    placeholder="Full Address"
+                                    className="textarea textarea-bordered w-full"
+                                    value={address}
+                                    onChange={(event) =>
+                                        setAddress(event.target.value)
+                                    }
+                                />
+                                {addressError && (
+                                    <label className="label">
+                                        <span className="label-text-alt text-error">
+                                            {addressError}
+                                        </span>
+                                    </label>
+                                )}
+                            </div>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">
+                                        Phone Number
+                                    </span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Phone Number"
+                                    className="input input-bordered w-full"
+                                    value={phoneNumber}
+                                    onChange={(event) =>
+                                        setNumber(event.target.value)
+                                    }
+                                />
+                                {phoneError && (
+                                    <label className="label">
+                                        <span className="label-text-alt text-error">
+                                            {phoneError}
+                                        </span>
+                                    </label>
+                                )}
+                            </div>
+                            <div className="modal-action">
+                                <button className="btn btn-primary">
+                                    Confirm Order
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="flex items-center flex-col gap-3">
+                                <span className="text-primary">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-16 w-16 block"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            fillRule="evenodd"
+                                            d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                            clipRule="evenodd"
+                                        />
+                                    </svg>
                                 </span>
-                            </label>
-                        )}
-                    </div>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Customer Address</span>
-                        </label>
-                        <textarea
-                            placeholder="Full Address"
-                            className="textarea textarea-bordered w-full"
-                            value={address}
-                            onChange={(event) => setAddress(event.target.value)}
-                        />
-                        {addressError && (
-                            <label className="label">
-                                <span className="label-text-alt text-error">
-                                    {addressError}
-                                </span>
-                            </label>
-                        )}
-                    </div>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Phone Number</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Phone Number"
-                            className="input input-bordered w-full"
-                            value={phoneNumber}
-                            onChange={(event) => setNumber(event.target.value)}
-                        />
-                        {phoneError && (
-                            <label className="label">
-                                <span className="label-text-alt text-error">
-                                    {phoneError}
-                                </span>
-                            </label>
-                        )}
-                    </div>
-                    <div className="modal-action">
-                        <button className="btn btn-primary">
-                            Confirm Order
-                        </button>
-                    </div>
+                                <p className="text-center text-xl font-bold mb-5">
+                                    Cart is Empty
+                                </p>
+                            </div>
+                        </>
+                    )}
                 </form>
             </div>
         </>

@@ -31,7 +31,7 @@ const Shop: NextPage<ShopProps> = ({ products, count, pages }) => {
     return (
         <>
             <Head>
-                <title>Shop</title>
+                <title>Shop - MyLittlePlant</title>
             </Head>
             <section className="mt-10">
                 <h1 className="text-center text-4xl font-bold text-primary">

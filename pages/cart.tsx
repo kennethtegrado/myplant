@@ -10,7 +10,7 @@ const Cart: NextPage = () => {
     return (
         <>
             <Head>
-                <title>Shopping Cart - MyLittlePlant</title>
+                <title>Cart - MyLittlePlant</title>
             </Head>
             <section className="flex flex-col items-center lg:flex-row py-10 gap-10">
                 <ShoppingCart />

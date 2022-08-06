@@ -215,12 +215,14 @@ const Navbar: FunctionComponent = () => {
                                 >
                                     <a>Vines</a>
                                 </li>
-                                <li>
-                                    <Link href="/order" passHref>
-                                        <a className="text-primary active:text-white">
-                                            Track Order
-                                        </a>
-                                    </Link>
+                                <li
+                                    className={`hover-bordered ${
+                                        path === 'order' &&
+                                        'bg-primary text-white'
+                                    }`}
+                                    onClick={() => router.push('/order')}
+                                >
+                                    <a>Track Order</a>
                                 </li>
                             </ul>
                         </div>
