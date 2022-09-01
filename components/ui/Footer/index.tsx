@@ -1,5 +1,8 @@
 import type { FunctionComponent } from 'react';
 
+// NEXT Import
+import Link from 'next/link';
+
 const Footer: FunctionComponent = () => {
     return (
         <footer className="bg-accent text-base-content">
@@ -25,20 +28,45 @@ const Footer: FunctionComponent = () => {
                     </p>
                 </div>
                 <div>
-                    <span className="footer-title">Products</span>
-                    <a className="link link-hover">Big Plant</a>
-                    <a className="link link-hover">Trees</a>
-                    <a className="link link-hover">Small Plant</a>
+                    <Link href="/shop" passHref>
+                        <span className="footer-title">Shop</span>
+                    </Link>
+                    <Link href='/shop?categories="herbs"' passHref>
+                        <a className="link link-hover">Herb Plants</a>
+                    </Link>
+
+                    <Link href='/shop?categories="flowering"' passHref>
+                        <a className="link link-hover">Flowering Plants</a>
+                    </Link>
+
+                    <Link href='/shop?categories="trees"' passHref>
+                        <a className="link link-hover">Trees</a>
+                    </Link>
+
+                    <Link href='/shop?categories="vines"' passHref>
+                        <a className="link link-hover">Vines</a>
+                    </Link>
                 </div>
                 <div>
-                    <span className="footer-title">Company</span>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                </div>
-                <div>
-                    <span className="footer-title">Legal</span>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
+                    <span className="footer-title">About Kenneth</span>
+                    <a
+                        className="link link-hover"
+                        href="https://github.com/kennethtegrado"
+                    >
+                        Github
+                    </a>
+                    <a
+                        className="link link-hover"
+                        href="https://www.linkedin.com/in/kennethtegrado/"
+                    >
+                        LinkedIn
+                    </a>
+                    <a
+                        className="link link-hover"
+                        href="https://www.kennethtegrado.tech/"
+                    >
+                        Website
+                    </a>
                 </div>
             </footer>
         </footer>

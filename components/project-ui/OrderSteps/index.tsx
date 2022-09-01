@@ -20,9 +20,9 @@ const OrderSteps: FunctionComponent<OrderStepsProps> = ({ status }) => {
                 <li
                     key={index}
                     className={`step ${
-                        currentStatusIndex > index && 'step-secondary'
+                        currentStatusIndex > index && 'step-primary'
                     } ${
-                        currentStatusIndex === index && 'step-primary'
+                        currentStatusIndex === index && 'step-primary font-bold'
                     } capitalize`}
                 >
                     {item}

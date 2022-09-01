@@ -16,6 +16,7 @@ interface CartState {
     increaseItem: (id: string) => void;
     setAlert: (success: boolean, message: string) => void;
     removeItem: (id: string) => void;
+    clearItems: () => void;
 }
 
 const useCartStore = create<CartState>((set) => ({
@@ -25,6 +26,11 @@ const useCartStore = create<CartState>((set) => ({
     totalPrice: 0,
     addProduct: (product) =>
         set((state) => {
+            if (product.quantity <= 0)
+                throw new Error(
+                    `${product.quantity} is not a valid quantity to order the item.`
+                );
+
             if (product.quantity > product.stock)
                 throw new Error(
                     `There's not enough stock for ${
@@ -123,6 +129,9 @@ const useCartStore = create<CartState>((set) => ({
                 items: newCount,
             };
         }),
+    clearItems: () => {
+        return set({ products: [], totalPrice: 0, items: 0 });
+    },
 }));
 
 export default useCartStore;
