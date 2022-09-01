@@ -26,6 +26,11 @@ const useCartStore = create<CartState>((set) => ({
     totalPrice: 0,
     addProduct: (product) =>
         set((state) => {
+            if (product.quantity <= 0)
+                throw new Error(
+                    `${product.quantity} is not a valid quantity to order the item.`
+                );
+
             if (product.quantity > product.stock)
                 throw new Error(
                     `There's not enough stock for ${
