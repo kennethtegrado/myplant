@@ -93,6 +93,7 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
                         }`}
                         value={quantity}
                         onChange={changeHandler}
+                        min="0"
                     />
                     <label className="label">
                         <span className="label-text-alt text-error">
@@ -104,6 +105,7 @@ const ProductHeader: FunctionComponent<ProductHeaderProps> = ({
                 <button
                     className="btn btn-outline btn-primary"
                     onClick={addProduct}
+                    disabled={!stocks ? true : +quantity > 0 ? false : true}
                 >
                     Add to Cart
                 </button>
